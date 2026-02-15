@@ -2,6 +2,8 @@
 
 Site vitrine du projet Imagiro. Stack : **React**, **MongoDB**, **Docker**.
 
+**Documentation** : [docs/](docs/README.md) (architecture, API, développement, conventions). Génération de la doc du code : `npm run doc`.
+
 ## Créer le dépôt GitHub
 
 Si le dépôt n’existe pas encore sur GitHub :

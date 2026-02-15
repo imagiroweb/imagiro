@@ -1,3 +1,7 @@
+/**
+ * Point d’entrée de l’application React.
+ * Monte le composant {@link App} dans le DOM.
+ */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'

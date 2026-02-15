@@ -1,5 +1,10 @@
 import './App.css'
 
+/**
+ * Composant racine de l’application vitrine Imagiro.
+ * Affiche le header, le contenu principal et le footer.
+ * @returns {JSX.Element}
+ */
 function App() {
   return (
     <div className="app">
