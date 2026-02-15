@@ -2,6 +2,23 @@
 
 Site vitrine du projet Imagiro. Stack : **React**, **MongoDB**, **Docker**.
 
+## Créer le dépôt GitHub
+
+Si le dépôt n’existe pas encore sur GitHub :
+
+**Avec GitHub CLI :**
+```bash
+gh repo create imagiro --private --source=. --remote=origin --push
+```
+
+**À la main :**
+1. Crée un dépôt sur [github.com/new](https://github.com/new) (ex. `imagiro`).
+2. Puis :
+```bash
+git remote add origin https://github.com/TON_USERNAME/imagiro.git
+git push -u origin main
+```
+
 ## Structure
 
 - `frontend/` — Application React (Vite)
