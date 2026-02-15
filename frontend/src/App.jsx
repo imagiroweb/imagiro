@@ -1,27 +1,17 @@
-import './App.css'
-
 /**
- * Composant racine de l’application vitrine Imagiro.
- * Affiche le header, le contenu principal et le footer.
+ * Point de composition racine (Vertical Slice Architecture).
+ * Assemble le layout partagé et les slices.
  * @returns {JSX.Element}
  */
+import Layout from './shared/layout/Layout.jsx'
+import HomePage from './slices/home/HomePage.jsx'
+import './App.css'
+
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Imagiro</h1>
-        <p className="tagline">Site vitrine</p>
-      </header>
-      <main className="main">
-        <section>
-          <h2>Bienvenue</h2>
-          <p>Bienvenue sur le site vitrine d'Imagiro.</p>
-        </section>
-      </main>
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Imagiro</p>
-      </footer>
-    </div>
+    <Layout>
+      <HomePage />
+    </Layout>
   )
 }
 

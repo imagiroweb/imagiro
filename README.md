@@ -21,11 +21,13 @@ git remote add origin https://github.com/TON_USERNAME/imagiro.git
 git push -u origin main
 ```
 
-## Structure
+## Structure (Vertical Slice Architecture)
 
-- `frontend/` — Application React (Vite)
-- `backend/` — API Node.js (Express) + connexion MongoDB
+- `frontend/src/` — **shared/** (layout), **slices/** (features, ex. home), `App.jsx`
+- `backend/src/` — **shared/** (db, app), **slices/** (health, api, …), `index.js`
 - `docker-compose.yml` — Orchestration des services
+
+Voir [docs/architecture.md](docs/architecture.md) pour le détail.
 
 ## Démarrage avec Docker
 

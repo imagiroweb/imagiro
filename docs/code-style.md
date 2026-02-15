@@ -64,10 +64,10 @@ function App() {
 
 **Note** : Pour que la génération JSDoc fonctionne sans erreur, utiliser des types simples dans les tags (`object`, `Promise<void>`, etc.) plutôt que des types `import('module').Type`.
 
-## Fichiers
+## Fichiers et Vertical Slice Architecture
 
-- **Un composant principal par fichier** pour React (nom du fichier = nom du composant en PascalCase, ex. `App.jsx`).
-- **Backend** : regrouper les routes par domaine si le projet grandit (ex. `routes/health.js`, `routes/contact.js`).
+- **Frontend** : une **slice** = un dossier sous `src/slices/<feature>/` (ex. `home/HomePage.jsx` + `HomePage.css`). Un composant principal par fichier (PascalCase).
+- **Backend** : une **slice** = un dossier sous `src/slices/<feature>/` (ex. `health/health.routes.js`). Chaque slice exporte un routeur ; l’infra partagée reste dans `shared/`.
 
 ## Génération de la doc
 

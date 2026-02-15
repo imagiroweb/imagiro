@@ -1,56 +1,20 @@
 /**
- * Backend Imagiro — API Express + MongoDB.
+ * Backend Imagiro — point d’entrée (Vertical Slice Architecture).
  * @module backend
  */
 
 import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
-import { MongoClient } from 'mongodb'
+import { connectMongo } from './shared/db.js'
+import { getApp, useRouter } from './shared/app.js'
+import healthRoutes from './slices/health/health.routes.js'
+import apiRoutes from './slices/api/api.routes.js'
 
-const app = express()
 const PORT = process.env.PORT || 3001
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://mongo:27017'
 
-app.use(cors())
-app.use(express.json())
+useRouter('/api', healthRoutes)
+useRouter('/api', apiRoutes)
 
-/** Base de données MongoDB `imagiro`. @type {object|undefined} */
-let db
-
-/**
- * Établit la connexion à MongoDB et assigne la base `imagiro` à `db`.
- * @returns {Promise<void>}
- * @throws {Error} Si la connexion échoue
- */
-async function connectMongo() {
-  const client = new MongoClient(MONGODB_URI)
-  await client.connect()
-  db = client.db('imagiro')
-  console.log('Connecté à MongoDB')
-}
-
-/**
- * Health check du backend (monitoring / load balancer).
- * @param {object} _ - Requête Express (non utilisée)
- * @param {object} res - Réponse Express (JSON)
- */
-app.get('/api/health', (_, res) => {
-  res.json({ status: 'ok', service: 'imagiro-backend' })
-})
-
-/**
- * Description courte de l’API et liste des endpoints.
- * @param {object} _ - Requête Express (non utilisée)
- * @param {object} res - Réponse Express (JSON)
- */
-app.get('/api', (_, res) => {
-  res.json({
-    message: 'API Imagiro',
-    version: '0.0.1',
-    endpoints: ['/api/health'],
-  })
-})
+const app = getApp()
 
 /**
  * Démarre le serveur après connexion à MongoDB.

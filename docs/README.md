@@ -6,7 +6,7 @@ Documentation du projet site vitrine Imagiro.
 
 | Document | Description |
 |----------|-------------|
-| [Architecture](architecture.md) | Structure du projet, services, flux |
+| [Architecture](architecture.md) | **Vertical Slice Architecture** (VSA), structure backend/frontend, flux |
 | [API](api.md) | Endpoints du backend, formats des réponses |
 | [Développement](development.md) | Environnement local, commandes, debug |
 | [Conventions de code](code-style.md) | Style, JSDoc, nommage, bonnes pratiques |
