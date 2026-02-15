@@ -1,36 +1,25 @@
+/**
+ * Backend Imagiro — point d’entrée (Vertical Slice Architecture).
+ * @module backend
+ */
+
 import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
-import { MongoClient } from 'mongodb'
+import { connectMongo } from './shared/db.js'
+import { getApp, useRouter } from './shared/app.js'
+import healthRoutes from './slices/health/health.routes.js'
+import apiRoutes from './slices/api/api.routes.js'
 
-const app = express()
 const PORT = process.env.PORT || 3001
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://mongo:27017'
 
-app.use(cors())
-app.use(express.json())
+useRouter('/api', healthRoutes)
+useRouter('/api', apiRoutes)
 
-let db
+const app = getApp()
 
-async function connectMongo() {
-  const client = new MongoClient(MONGODB_URI)
-  await client.connect()
-  db = client.db('imagiro')
-  console.log('Connecté à MongoDB')
-}
-
-app.get('/api/health', (_, res) => {
-  res.json({ status: 'ok', service: 'imagiro-backend' })
-})
-
-app.get('/api', (_, res) => {
-  res.json({
-    message: 'API Imagiro',
-    version: '0.0.1',
-    endpoints: ['/api/health'],
-  })
-})
-
+/**
+ * Démarre le serveur après connexion à MongoDB.
+ * @returns {Promise<void>}
+ */
 async function start() {
   try {
     await connectMongo()

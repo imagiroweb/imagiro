@@ -1,0 +1,17 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": "\\.(jsx?|tsx?)$",
+    "excludePattern": "node_modules"
+  },
+  "opts": {
+    "destination": "../docs/generated/frontend",
+    "recurse": true,
+    "readme": "../docs/README-frontend.md"
+  },
+  "plugins": ["node_modules/jsdoc/plugins/markdown"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  }
+}
