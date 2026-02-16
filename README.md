@@ -67,6 +67,34 @@ npm run dev
 
 Le backend écoute sur http://localhost:3001.
 
+## Tests unitaires
+
+```bash
+# Tous les tests (backend + frontend)
+npm test
+
+# Backend uniquement
+npm run test:backend
+
+# Frontend uniquement
+npm run test:frontend
+```
+
+Backend : Vitest + supertest (routes health, api, shared app/db).  
+Frontend : Vitest + React Testing Library (App, Layout, Header, Footer, HomePage).
+
+## Hooks Git (Husky)
+
+À chaque commit :
+
+- **pre-commit** : exécute `npm test` (backend + frontend). Le commit est refusé si les tests échouent.
+- **commit-msg** : vérifie le format du message avec [Commitlint](https://commitlint.js.org/) (Conventional Commits).
+
+Format attendu : `type(scope): description` (ex. `feat(auth): ajout SSO Google`, `fix: correction lien header`).  
+Types autorisés : `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`.
+
+Après un `git clone` ou `npm install`, les hooks sont installés automatiquement (`prepare` → `husky`).
+
 ## Licence
 
 Propriétaire — Imagiro.

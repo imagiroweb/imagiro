@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Exécuté avant chaque commit : lance les tests pour éviter de commiter du code cassé.
+npm test
