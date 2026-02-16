@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "doc": "jsdoc -c jsdoc.json",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:integration": "vitest run src/integration"
   },
   "dependencies": {
     "react": "^18.3.1",

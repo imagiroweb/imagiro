@@ -83,6 +83,22 @@ npm run test:frontend
 Backend : Vitest + supertest (routes health, api, shared app/db).  
 Frontend : Vitest + React Testing Library (App, Layout, Header, Footer, HomePage).
 
+**Tests d’intégration** (scénarios complets) :
+
+```bash
+# Tous les tests d’intégration
+npm run test:integration
+
+# Backend uniquement (API complète : CORS, 404, flux)
+npm run test:integration --prefix backend
+
+# Frontend uniquement (App complète : header, main, footer)
+npm run test:integration --prefix frontend
+```
+
+- Backend : `backend/src/integration/app.integration.test.js` — app Express (CORS, JSON), routes `/api` et `/api/health`, 404, flux.
+- Frontend : `frontend/src/integration/App.integration.test.jsx` — rendu complet de l’App, structure DOM, contenu.
+
 ## Hooks Git (Husky)
 
 À chaque commit :
