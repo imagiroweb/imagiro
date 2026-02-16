@@ -1,0 +1,11 @@
+{
+  "name": "imagiro",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Site vitrine Imagiro — React, MongoDB, Docker",
+  "scripts": {
+    "doc": "npm run doc:backend && npm run doc:frontend",
+    "doc:backend": "npm run doc --prefix backend",
+    "doc:frontend": "npm run doc --prefix frontend"
+  }
+}
