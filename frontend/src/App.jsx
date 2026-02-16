@@ -1,22 +1,54 @@
+/**
+ * Point de composition racine (Vertical Slice Architecture).
+ * Assemble le layout, l'auth et les slices (home, login, signup).
+ * @returns {JSX.Element}
+ */
+import { useState } from 'react'
+import { AuthProvider, useAuth } from './shared/auth/AuthContext.jsx'
+import Layout from './shared/layout/Layout.jsx'
+import HomePage from './slices/home/HomePage.jsx'
+import LoginPage from './slices/auth/LoginPage.jsx'
+import SignupPage from './slices/auth/SignupPage.jsx'
+import SecurityPage from './slices/auth/SecurityPage.jsx'
 import './App.css'
+
+function AppContent() {
+  const { user, logout, loading } = useAuth()
+  const [page, setPage] = useState('home')
+
+  if (loading) {
+    return (
+      <Layout user={null} logout={() => {}} onNavigate={setPage}>
+        <p>Chargement…</p>
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout user={user} logout={logout} onNavigate={setPage}>
+      {page === 'home' && <HomePage />}
+      {page === 'security' && <SecurityPage />}
+      {page === 'login' && (
+        <LoginPage
+          onSuccess={() => setPage('home')}
+          onGoToSignup={() => setPage('signup')}
+        />
+      )}
+      {page === 'signup' && (
+        <SignupPage
+          onSuccess={() => setPage('home')}
+          onGoToLogin={() => setPage('login')}
+        />
+      )}
+    </Layout>
+  )
+}
 
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Imagiro</h1>
-        <p className="tagline">Site vitrine</p>
-      </header>
-      <main className="main">
-        <section>
-          <h2>Bienvenue</h2>
-          <p>Bienvenue sur le site vitrine d'Imagiro.</p>
-        </section>
-      </main>
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Imagiro</p>
-      </footer>
-    </div>
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   )
 }
 

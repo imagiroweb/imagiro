@@ -16,6 +16,7 @@ services:
     environment:
       PORT: 3001
       MONGODB_URI: mongodb://mongo:27017
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
     depends_on:
       - mongo
     restart: unless-stopped

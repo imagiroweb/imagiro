@@ -8,15 +8,71 @@
   padding: 2rem;
 }
 
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header-row {
+  flex: 1;
+}
+
 .header h1 {
   font-size: 2.5rem;
   margin: 0;
   font-weight: 700;
 }
 
+.header-logo {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header-logo:hover {
+  text-decoration: underline;
+}
+
 .tagline {
   color: var(--color-text-muted);
   margin-top: 0.5rem;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-user {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.header-sep {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.header-link {
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+.header-link:hover {
+  color: var(--color-text-muted);
 }
 
 .main {
