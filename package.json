@@ -4,8 +4,18 @@
   "version": "0.0.1",
   "description": "Site vitrine Imagiro — React, MongoDB, Docker",
   "scripts": {
+    "prepare": "husky",
     "doc": "npm run doc:backend && npm run doc:frontend",
     "doc:backend": "npm run doc --prefix backend",
-    "doc:frontend": "npm run doc --prefix frontend"
+    "doc:frontend": "npm run doc --prefix frontend",
+    "test": "npm run test --prefix backend && npm run test --prefix frontend",
+    "test:backend": "npm run test --prefix backend",
+    "test:frontend": "npm run test --prefix frontend",
+    "test:integration": "npm run test:integration --prefix backend && npm run test:integration --prefix frontend"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "husky": "^9.1.7"
   }
 }

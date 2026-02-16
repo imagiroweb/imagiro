@@ -6,10 +6,15 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run src/integration"
   },
   "devDependencies": {
-    "jsdoc": "^4.0.2"
+    "jsdoc": "^4.0.2",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
